@@ -1,0 +1,9 @@
+provider_id: local_vllm_template
+family: local_vllm
+model_name: local-vllm-template
+local_only: true
+endpoint: http://127.0.0.1:8000/v1/chat/completions
+credential_env_vars: []
+notes:
+  - Local endpoint template.
+  - No model download is performed by registry readiness.

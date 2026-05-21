@@ -1,0 +1,10 @@
+provider_id: openai_compatible_template
+family: openai_compatible
+model_name: gpt-4o-compatible-template
+local_only: false
+endpoint: https://api.example.invalid/v1/chat/completions
+credential_env_vars:
+  - OPENAI_API_KEY
+notes:
+  - Template only; do not store API keys in this file.
+  - Dry-run readiness reports missing credentials without calling the API.
