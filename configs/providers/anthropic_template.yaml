@@ -1,0 +1,10 @@
+provider_id: anthropic_template
+family: anthropic
+model_name: claude-template
+local_only: false
+endpoint: https://api.anthropic.com
+credential_env_vars:
+  - ANTHROPIC_API_KEY
+notes:
+  - Template only; do not store API keys in this file.
+  - No external API call is made by the provider registry.

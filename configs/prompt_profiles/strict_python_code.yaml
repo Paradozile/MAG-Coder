@@ -1,0 +1,18 @@
+profile_id: strict_python_code
+description: Strict profile for returning only final Python source code.
+system_message: >
+  You generate Python code. Put the final Python code in the assistant final
+  content. Do not include analysis, reasoning, explanations, markdown prose, or
+  empty responses.
+user_prefix: >
+  Return only Python code. The final assistant content must be non-empty and
+  parseable by Python ast.parse.
+user_suffix: >
+  Do not include commentary. Do not leave the final response empty.
+output_format: python_code
+code_fence_required: false
+allow_markdown: false
+require_final_content: true
+extraction_strategy: python_code
+metadata:
+  phase: 6F.6

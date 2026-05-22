@@ -1,0 +1,15 @@
+profile_id: compact_python_code
+description: Compact profile for shorter local-model prompts.
+system_message: >
+  Generate concise, parseable Python code only. No analysis or explanation.
+user_prefix: >
+  Produce concise Python code only.
+user_suffix: >
+  End with valid Python code only.
+output_format: compact_python_code
+code_fence_required: false
+allow_markdown: false
+require_final_content: true
+extraction_strategy: python_code
+metadata:
+  phase: 6F.6

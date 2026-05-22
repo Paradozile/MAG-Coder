@@ -1,0 +1,10 @@
+provider_id: gemini_template
+family: gemini
+model_name: gemini-template
+local_only: false
+endpoint: https://generativelanguage.googleapis.com
+credential_env_vars:
+  - GEMINI_API_KEY
+notes:
+  - Template only; do not store API keys in this file.
+  - No external API call is made by the provider registry.

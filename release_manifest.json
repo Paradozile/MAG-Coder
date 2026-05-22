@@ -1,0 +1,112 @@
+{
+  "package_name": "mag-coder",
+  "version": "0.1.0",
+  "release_type": "code_only",
+  "included_source_modules": [
+    "src/magcoder/benchmark/full_builder",
+    "src/magcoder/benchmark/full_runner",
+    "src/magcoder/generation",
+    "src/magcoder/graphics",
+    "src/magcoder/providers",
+    "src/magcoder/refinement",
+    "src/magcoder/models",
+    "src/magcoder/evaluation"
+  ],
+  "included_cli_scripts": [
+    "scripts/download_official_source_tasks.py",
+    "scripts/build_full_mag_bench.py",
+    "scripts/validate_full_mag_bench.py",
+    "scripts/validate_full_mag_bench_oracles.py",
+    "scripts/validate_full_mag_bench_adapters.py",
+    "scripts/validate_full_mag_bench_abms_oracles.py",
+    "scripts/run_full_mag_bench_passk.py",
+    "scripts/check_full_mag_bench_real_run_readiness.py",
+    "scripts/select_2500_stratified_cases.py",
+    "scripts/analyze_paper2500_passk.py",
+    "scripts/analyze_rq2_ablation.py",
+    "scripts/export_mag_bench_func_views.py",
+    "scripts/export_paper_functionality_tables.py",
+    "scripts/render_mag_graphics.py",
+    "scripts/extract_mag_from_rendered_graph.py",
+    "scripts/scan_experiment_secrets.py",
+    "scripts/scan_submission_paths.py",
+    "scripts/audit_release_tree.py",
+    "scripts/run_code_submission_smoke.py"
+  ],
+  "included_configs": [
+    "configs/providers/ollama_native_qwen35_9b.yaml",
+    "configs/providers/openai_compatible_template.yaml",
+    "configs/providers/gemini_template.yaml",
+    "configs/providers/anthropic_template.yaml",
+    "configs/providers/local_vllm_template.yaml",
+    "configs/prompt_profiles"
+  ],
+  "included_examples": [
+    "examples/source_tasks/humaneval_style_seed.jsonl",
+    "examples/source_tasks/mbpp_style_seed.jsonl",
+    "examples/source_tasks/medium_humaneval_style_seed.jsonl",
+    "examples/source_tasks/medium_mbpp_style_seed.jsonl"
+  ],
+  "excluded_generated_artifacts": [
+    "benchmarks/**/passk_runs/",
+    "benchmarks/**/frozen_results/",
+    "benchmarks/full_mag_bench_2500_v1/",
+    "benchmarks/full_mag_bench_paper_v1/",
+    "benchmarks/full_mag_bench_medium_v1/",
+    "submission_artifacts/",
+    "paper_artifacts/",
+    "paper_artifacts_8i/",
+    "paper_integration_artifacts/",
+    "claim_artifacts/",
+    "claim_artifacts_8i5/",
+    "claim_artifacts_8j/",
+    "paper_functionality_artifacts/",
+    "final_submission_audit/",
+    ".release_audit/",
+    "data/source_tasks/official_raw/",
+    "data/source_tasks/*_official.jsonl"
+  ],
+  "implemented_paper_features": [
+    "structured MAG input",
+    "graphical DOT+manifest input",
+    "graph+NL and graph-only modes",
+    "zero-shot and few-shot baselines",
+    "AST refinement and without-AST ablation",
+    "official HumanEval/MBPP normalization",
+    "paper-scale template variant generation",
+    "contract/source-functional/ABMS evaluation",
+    "MAG-Bench-Func export",
+    "pass@1/3/5/10/50/100 aggregation",
+    "generation time reporting",
+    "fake and local real-provider runner"
+  ],
+  "bounded_or_interface_only_features": [
+    {
+      "feature": "multi-model providers",
+      "status": "interface_only",
+      "boundary": "provider templates are included without credentials or completed multi-model validation"
+    },
+    {
+      "feature": "VLM/PNG graphical extraction",
+      "status": "interface_only",
+      "boundary": "mock and manifest-based extraction are included; arbitrary PNG/VLM recognition is not claimed"
+    },
+    {
+      "feature": "full 2500-case real-model evaluation",
+      "status": "not_included",
+      "boundary": "the code can run it, but generated large results are excluded from the release"
+    }
+  ],
+  "claim_boundaries": [
+    "Generated large benchmark outputs and frozen results are intentionally excluded from Git.",
+    "Official HumanEval/MBPP data is downloaded by script when the user chooses to run it.",
+    "Real-model runs require a locally available model and never auto-pull models.",
+    "Provider templates do not contain credentials and do not imply completed multi-model validation.",
+    "DOT+manifest graphical input is implemented; arbitrary PNG/VLM recognition is not claimed as completed.",
+    "pass@10/50/100 aggregation is implemented, but users must run enough samples for those k values."
+  ],
+  "test_command": ".venv/bin/pytest",
+  "lint_command": ".venv/bin/ruff check .",
+  "typecheck_command": ".venv/bin/mypy",
+  "smoke_command": ".venv/bin/python scripts/run_code_submission_smoke.py --output .release_audit/smoke"
+}

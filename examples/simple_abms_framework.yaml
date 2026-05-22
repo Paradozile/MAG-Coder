@@ -1,0 +1,15 @@
+name: simple_abms
+required_base_class: null
+required_agent_methods:
+  - __init__
+interaction_method_prefix: interact_with
+message_api_name: send_message
+state_access_style: attribute
+naming_conventions:
+  agent_class_style: PascalCase
+  interaction_method_style: target_method
+  interaction_method_template: interact_with_<target_agent>
+metadata:
+  description: Minimal ABMS framework constraints for Phase 4A analysis.
+  requires_agent_classes: true
+  requires_filter_if_guard: true

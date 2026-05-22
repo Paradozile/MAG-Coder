@@ -1,0 +1,10 @@
+provider_id: ollama_native_qwen35_9b
+family: ollama_native
+model_name: qwen3.5:9b
+local_only: true
+endpoint: http://127.0.0.1:11434/api/chat
+credential_env_vars: []
+auto_pull: false
+notes:
+  - Local Ollama model must already exist.
+  - Readiness checks must not download or pull models.

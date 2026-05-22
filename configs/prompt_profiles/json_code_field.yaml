@@ -1,0 +1,16 @@
+profile_id: json_code_field
+description: Profile requesting a JSON object with a code field.
+system_message: >
+  Generate Python code and return a JSON object with exactly one string field
+  named code. Do not include analysis or reasoning.
+user_prefix: >
+  Return JSON only, using this shape: {"code": "...python source..."}.
+user_suffix: >
+  The code field must contain non-empty parseable Python code.
+output_format: json_code_field
+code_fence_required: false
+allow_markdown: false
+require_final_content: true
+extraction_strategy: json_code_field
+metadata:
+  phase: 6F.6

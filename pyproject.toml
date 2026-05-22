@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mag-coder"
+version = "0.1.0"
+description = "A research prototype for interaction-model-to-code generation in ABMS."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "MAG-Coder Contributors" },
+]
+dependencies = [
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.11",
+  "pytest>=8.0",
+  "ruff>=0.6.0",
+  "types-PyYAML>=6.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/magcoder"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests"]
+target-version = "py310"
+exclude = [
+  "benchmarks/mini_mag_bench/passk_runs",
+  "benchmarks/full_mag_bench_v1",
+  "benchmarks/full_mag_bench_medium_v1",
+  "benchmarks/full_mag_bench_paper_v1",
+  "benchmarks/full_mag_bench_2500_v1",
+  "claim_artifacts",
+  "claim_artifacts_8i5",
+  "claim_artifacts_8j",
+  "data/source_tasks",
+  ".release_audit",
+  "final_submission_audit",
+  "paper_artifacts",
+  "paper_artifacts_8i",
+  "paper_functionality_artifacts",
+  "runs",
+  "submission_artifacts",
+]
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "SIM", "UP"]
+
+[tool.mypy]
+mypy_path = "src"
+packages = ["magcoder"]
+python_version = "3.10"
+strict = true
+exclude = "^(.release_audit|benchmarks|claim_artifacts|claim_artifacts_8i5|claim_artifacts_8j|final_submission_audit|paper_artifacts|paper_artifacts_8i|paper_functionality_artifacts|runs|submission_artifacts)/"
